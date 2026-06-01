@@ -10,5 +10,5 @@ Following Topics are provided:
 - variables between modules
 - classes
   - class attributes
-  - OOP - 4 pillars
+- OOP - 4 pillars plus composition and DI
 - SOLID Principles
