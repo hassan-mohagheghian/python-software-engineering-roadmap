@@ -6,9 +6,9 @@ Also have tried to each concepts be in a self-described module (e.g. file).
 
 Following Topics are provided:
 
-- read input in python
-- variables between modules
-- classes
+- IO
+- Modules
+- Classes
   - class attributes
 - OOP
   - Abstraction
