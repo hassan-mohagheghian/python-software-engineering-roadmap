@@ -25,6 +25,8 @@ Included topics
   - Mixin
   - Interface
   - Abstract Class
+  - Duck Typing
+  - Protocol
 - SOLID principles
   - SRP - Single Responsibility Principle
   - OCP - Open/Closed Principle
