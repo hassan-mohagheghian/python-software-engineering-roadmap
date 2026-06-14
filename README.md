@@ -36,6 +36,7 @@ Included topics
 - Design Patterns
   - Strategy Pattern
   - Factory Method Pattern
+  - Abstract Factory Pattern
 
 ## Getting started
 
