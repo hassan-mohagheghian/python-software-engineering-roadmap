@@ -41,6 +41,7 @@ Included topics
   - Facade Pattern
 - System Design
   - Client Server Model
+  - HTTP Rest
 
 ## Getting started
 
