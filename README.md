@@ -39,6 +39,7 @@ Included topics
   - Abstract Factory Pattern
   - Adapter Pattern
   - Facade Pattern
+  - Decorator Pattern
 - System Design
   - Client Server Model
   - HTTP Rest
