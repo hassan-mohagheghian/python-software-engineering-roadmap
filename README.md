@@ -107,6 +107,7 @@ ordered from beginner topics toward advanced engineering topics.
 - Message Queue
 - Database Replication
 - Microservices Architecture
+- Consistent Hashing
 
 ## How To Use
 
@@ -118,6 +119,7 @@ python PSE_005_Error_Handling/01_try_except.py
 python PSE_006_Data_Structures/01_list.py
 python PSE_009_Design_Patterns/01_strategy_pattern.py
 python PSE_010_System_Design/08_microservices_architecture/08_microservices_architecture.py
+python PSE_010_System_Design/09_consistent_hashing/09_consistent_hashing.py
 ```
 
 Most files include:
