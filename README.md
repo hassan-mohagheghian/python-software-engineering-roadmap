@@ -121,6 +121,7 @@ ordered from beginner topics toward advanced engineering topics.
 - Microservices Architecture
 - Consistent Hashing
 - URL Shortener
+- Pagination
 
 ### Concurrency & Parallelism
 
