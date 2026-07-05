@@ -13,7 +13,7 @@ and modified without needing a full application setup.
 ## Repository Structure
 
 ```text
-PSE_000_Python_Basics/       Variables, types, loops, strings, lists, dicts, tuples
+PSE_000_Python_Basics/       Variables, types, loops, strings, lists, dicts, tuples, sets
 PSE_010_Input_Output/        stdin, file I/O, CSV, JSON, pathlib
 PSE_020_Modules/             Imports, packages, pip, __name__
 PSE_030_Functions/           Basics, args/kwargs, lambda, closures, decorators
@@ -57,10 +57,10 @@ PSE_<NUMBER>_<TOPIC_NAME>
 
 ## Topics Covered
 
-### PSE_000 — Python Basics (8 files)
+### PSE_000 — Python Basics (9 files)
 
-| # | File | Topic |
-|---|------|-------|
+| # | File | Topics |
+|---|------|--------|
 | 1 | `PB_01_variables.py` | Variables, dynamic typing, unpacking |
 | 2 | `PB_02_data_types.py` | int, float, str, bool, None |
 | 3 | `PB_03_conditionals.py` | if / elif / else, ternary |
@@ -68,7 +68,8 @@ PSE_<NUMBER>_<TOPIC_NAME>
 | 5 | `PB_06_strings.py` | String operations, formatting |
 | 6 | `PB_07_lists.py` | Lists, slicing, comprehensions |
 | 7 | `PB_08_dictionaries.py` | Dicts, comprehensions |
-| 8 | `PB_09_tuples_sets.py` | Tuples, sets, frozenset |
+| 8 | `PB_09_tuples.py` | Tuples, named tuples |
+| 9 | `PB_10_sets.py` | Sets, frozenset, set operations |
 
 ### PSE_010 — Input / Output (1 file)
 
