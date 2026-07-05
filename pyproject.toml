@@ -4,4 +4,6 @@ version = "0.1.0"
 description = "A practical collection of small Python examples for learning software engineering concepts step by step."
 readme = "README.md"
 requires-python = ">=3.14"
-dependencies = []
+dependencies = [
+    "ipython>=9.15.0",
+]

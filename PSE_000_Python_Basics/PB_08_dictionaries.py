@@ -25,14 +25,14 @@ settings = dict(theme="dark", font_size=14, auto_save=True)
 
 # From keys
 keys = ["a", "b", "c"]
-default_dict = dict.fromkeys(keys, 0)
+from_keys_dict = dict.fromkeys(keys, 0)
 
 # Comprehension
-squares = {x: x ** 2 for x in range(1, 6)}
+squares = {x: x**2 for x in range(1, 6)}
 
 print(f"Person: {person}")
 print(f"Settings: {settings}")
-print(f"Default: {default_dict}")
+print(f"From_Keys: {from_keys_dict}")
 print(f"Squares: {squares}")
 
 
@@ -151,22 +151,12 @@ print(f"Swapped: {swapped}")
 
 
 company = {
-    "engineering": {
-        "headcount": 50,
-        "lead": "Alice"
-    },
-    "marketing": {
-        "headcount": 30,
-        "lead": "Bob"
-    }
+    "engineering": {"headcount": 50, "lead": "Alice"},
+    "marketing": {"headcount": 30, "lead": "Bob"},
 }
 
 print(f"\nCompany: {company}")
 print(f"Engineering lead: {company['engineering']['lead']}")
-
-# Nested comprehension
-dept_summary = {dept: info["headcount"] for dept, info in company.items()}
-print(f"Dept sizes: {dept_summary}")
 
 
 # =============================================================================
@@ -178,7 +168,7 @@ def main():
     print("=== Dictionary Creation ===")
     a = {"x": 1, "y": 2, "z": 3}
     b = dict(name="Alice", age=30)
-    c = {i: i ** 2 for i in range(5)}
+    c = {i: i**2 for i in range(5)}
     print(f"  a = {a}")
     print(f"  b = {b}")
     print(f"  c = {c}")
