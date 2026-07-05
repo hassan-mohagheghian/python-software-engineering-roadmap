@@ -19,16 +19,19 @@
 
 # Import entire module
 import math
+
 print(f"Pi: {math.pi}")
 print(f"sqrt(16): {math.sqrt(16)}")
 
 # Import specific items
-from random import randint, choice
+from random import choice, randint  # noqa: E402
+
 print(f"Random int 1-10: {randint(1, 10)}")
 print(f"Random choice: {choice(['a', 'b', 'c'])}")
 
 # Import with alias
-import datetime as dt
+import datetime as dt  # noqa: E402
+
 now = dt.datetime.now()
 print(f"Now: {now.strftime('%Y-%m-%d %H:%M')}")
 
@@ -42,17 +45,19 @@ print(f"Now: {now.strftime('%Y-%m-%d %H:%M')}")
 
 
 # os — operating system interface
-import os
+import os  # noqa: E402
+
 print(f"\nCurrent dir: {os.getcwd()}")
 print(f"Platform: {os.name}")
 
 # sys — system-specific parameters
-import sys
+import sys  # noqa: E402
+
 print(f"Python version: {sys.version_info.major}.{sys.version_info.minor}")
 print(f"Platform: {sys.platform}")
 
 # collections — specialized containers
-from collections import Counter, defaultdict, deque
+from collections import Counter, defaultdict, deque  # noqa: E402
 
 words = ["apple", "banana", "apple", "cherry", "banana", "apple"]
 counter = Counter(words)
@@ -70,24 +75,26 @@ dq.append(4)
 print(f"Deque: {dq}")
 
 # itertools — iteration utilities
-from itertools import chain, combinations, product
+from itertools import chain, combinations, product  # noqa: E402
 
 print(f"\nChain: {list(chain([1, 2], [3, 4]))}")
 print(f"Product: {list(product([1, 2], ['a', 'b']))}")
 print(f"Combinations: {list(combinations([1, 2, 3], 2))}")
 
 # functools — higher-order functions
-from functools import reduce, lru_cache
+from functools import lru_cache, reduce  # noqa: E402
 
 nums = [1, 2, 3, 4, 5]
 product_result = reduce(lambda a, b: a * b, nums)
 print(f"\nReduce product: {product_result}")
+
 
 @lru_cache(maxsize=128)
 def fib(n):
     if n < 2:
         return n
     return fib(n - 1) + fib(n - 2)
+
 
 print(f"Fib(30): {fib(30)}")
 
@@ -97,7 +104,7 @@ print(f"Fib(30): {fib(30)}")
 # =============================================================================
 
 
-import importlib
+import importlib  # noqa: E402, F401
 
 # importlib.reload(module) — reload a modified module during development
 
@@ -107,7 +114,7 @@ import importlib
 # =============================================================================
 
 
-print(f"\nModule search path (first 3):")
+print("\nModule search path (first 3):")
 for p in sys.path[:3]:
     print(f"  {p}")
 
@@ -164,6 +171,7 @@ def main():
 
     print("\n=== Random Module ===")
     import random
+
     random.seed(42)
     print(f"  randint(1, 100): {random.randint(1, 100)}")
     print(f"  random(): {random.random():.4f}")
