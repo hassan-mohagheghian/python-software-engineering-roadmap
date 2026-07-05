@@ -47,6 +47,11 @@ ordered from beginner topics toward advanced engineering topics.
 - Importing custom modules
 - Sharing global variables between modules
 - Defining and calling functions
+- *args and **kwargs
+- Lambda functions
+- First-class functions (passing and returning functions)
+- Closures
+- Decorators
 - Public, protected, and private attribute conventions
 - Creating data-focused classes with dataclass
 - Handling errors with try / except
@@ -109,6 +114,10 @@ ordered from beginner topics toward advanced engineering topics.
 - Template Method Pattern
 - Observer Pattern
 - Iterator Pattern
+- State Pattern
+- Mediator Pattern
+- Visitor Pattern
+- Memento Pattern
 
 ### System Design
 
@@ -134,7 +143,12 @@ ordered from beginner topics toward advanced engineering topics.
 Run any example directly with Python:
 
 ```bash
-python PSE_003_Functions/01_basic_functions.py
+python PSE_003_Functions/FUN_01_basic_functions.py
+python PSE_003_Functions/FUN_02_args_kwargs.py
+python PSE_003_Functions/FUN_03_lambda.py
+python PSE_003_Functions/FUN_04_first_class.py
+python PSE_003_Functions/FUN_05_closures.py
+python PSE_003_Functions/FUN_06_decorators.py
 python PSE_005_Error_Handling/01_try_except.py
 python PSE_006_Data_Structures/01_list.py
 python PSE_009_Design_Patterns/Behavioral/DP_B_01_strategy_pattern.py
