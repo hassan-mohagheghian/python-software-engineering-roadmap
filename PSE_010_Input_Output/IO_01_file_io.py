@@ -11,6 +11,9 @@
 # 6. Path handling — pathlib module.
 # -----------------------------------------------------------------------------
 
+import csv
+import json
+from pathlib import Path
 
 # =============================================================================
 # Writing Files
@@ -56,7 +59,7 @@ def read_line_by_line():
 def read_as_list():
     with open("sample.txt", "r") as f:
         lines = f.readlines()
-    print(f"Lines list: {[l.strip() for l in lines]}")
+    print(f"Lines list: {[line.strip() for line in lines]}")
 
 
 # =============================================================================
@@ -81,9 +84,6 @@ def read_binary():
 # =============================================================================
 # CSV Files
 # =============================================================================
-
-
-import csv
 
 
 def write_csv():
@@ -111,16 +111,13 @@ def read_csv():
 # =============================================================================
 
 
-import json
-
-
 def write_json():
     data = {
         "users": [
             {"name": "Alice", "age": 30, "active": True},
             {"name": "Bob", "age": 25, "active": False},
         ],
-        "count": 2
+        "count": 2,
     }
     with open("sample.json", "w") as f:
         json.dump(data, f, indent=2)
@@ -137,9 +134,6 @@ def read_json():
 # =============================================================================
 # Pathlib (Modern Path Handling)
 # =============================================================================
-
-
-from pathlib import Path
 
 
 def pathlib_demo():
@@ -209,6 +203,7 @@ def main():
 
     # Cleanup
     import os
+
     for f in ["sample.txt", "sample.bin", "sample.csv", "sample.json"]:
         if os.path.exists(f):
             os.remove(f)

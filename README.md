@@ -20,8 +20,8 @@ PSE_030_Functions/           Basics, args/kwargs, lambda, closures, decorators
 PSE_040_Classes/             Attributes, access control, dataclasses
 PSE_050_Error_Handling/      try/except, custom exceptions, best practices
 PSE_060_Data_Structures/     Lists, dicts, sets, stacks, queues, trees, graphs
-PSE_070_OOP/                 16 core OOP concepts
-PSE_080_SOLID/               5 SOLID principles with violate/follow examples
+PSE_070_OOP/                 13 core OOP concepts
+PSE_080_SOLID/               5 SOLID principles with examples
 PSE_090_Design_Patterns/     23 GoF + 4 enterprise patterns
 PSE_100_System_Design/       15 distributed systems topics
 PSE_200_Concurrency/         Threads, multiprocessing, async/await
@@ -48,7 +48,7 @@ PSE_<NUMBER>_<TOPIC_NAME>
 | 040 | PSE_040 | Classes | Attributes, access control, dataclasses |
 | 050 | PSE_050 | Error Handling | try/except, custom exceptions, best practices |
 | 060 | PSE_060 | Data Structures | Lists, dicts, sets, stacks, queues, trees, graphs |
-| 070 | PSE_070 | OOP | 16 core OOP concepts |
+| 070 | PSE_070 | OOP | 13 core OOP concepts |
 | 080 | PSE_080 | SOLID | 5 SOLID principles with examples |
 | 090 | PSE_090 | Design Patterns | 23 GoF + 4 enterprise patterns |
 | 100 | PSE_100 | System Design | 15 distributed systems topics |
@@ -119,36 +119,33 @@ PSE_<NUMBER>_<TOPIC_NAME>
 | 5 | `05_trees.py` | TreeNode, BST, in/pre/post-order traversal |
 | 6 | `06_graphs.py` | Adjacency list, BFS, DFS, path check |
 
-### PSE_070 — OOP (16 files)
+### PSE_070 — OOP (13 files)
 
-| Category | # | Concept | File |
-|---|---|---------|------|
-| **Core** | 1 | Abstraction | `abstraction.py` |
-| | 2 | Encapsulation | `encapsulation.py` |
-| | 3 | Inheritance | `inheritance.py` |
-| | 4 | Polymorphism | `polymorphism.py` |
-| **Relationships** | 5 | Composition | `composition.py` |
-| | 6 | Association | `association.py` |
-| | 7 | Aggregation | `aggregation.py` |
-| | 8 | Delegation | `delegation.py` |
-| **Reuse** | 9 | Mixin | `mixin.py` |
-| | 10 | Interface | `interface.py` |
-| | 11 | Abstract Class | `abstract_class.py` |
-| | 12 | Duck Typing | `duck_typing.py` |
-| | 13 | Protocol | `protocol.py` |
-| **Patterns** | 14 | State | `state.py` |
-| | 15 | Value Object | `value_object.py` |
-| | 16 | Entity | `entity.py` |
+| # | Concept | File |
+|---|---------|------|
+| 01 | Encapsulation | `OOP_01_encapsulation.py` |
+| 02 | Inheritance | `OOP_02_inheritance.py` |
+| 03 | Polymorphism | `OOP_03_polymorphism.py` |
+| 04 | Abstraction | `OOP_04_abstraction.py` |
+| 05 | Composition | `OOP_05_composition.py` |
+| 06 | Aggregation | `OOP_06_aggregation.py` |
+| 07 | Association | `OOP_07_association.py` |
+| 08 | Delegation | `OOP_08_delegation.py` |
+| 09 | Abstract Class | `OOP_09_abstract_class.py` |
+| 10 | Interface | `OOP_10_interface.py` |
+| 11 | Duck Typing | `OOP_11_duck_typing.py` |
+| 12 | Protocol | `OOP_12_protocol.py` |
+| 13 | Mixin | `OOP_13_mixin.py` |
 
-### PSE_080 — SOLID Principles (7 files)
+### PSE_080 — SOLID Principles (5 files)
 
-| # | Principle | Violate | Follow |
-|---|-----------|---------|--------|
-| 1 | SRP — Single Responsibility | `01_srp.py` | `01_srp.py` |
-| 2 | OCP — Open/Closed | `02_ocp.py` | `02_ocp.py` |
-| 3 | LSP — Liskov Substitution | `03_lsp.py` | `03_lsp.py` |
-| 4 | ISP — Interface Segregation | `04_isp_violate.py` | `04_isp_follow.py` |
-| 5 | DIP — Dependency Inversion | `05_dip_violate.py` | `05_dip_follow.py` |
+| # | Principle | File |
+|---|-----------|------|
+| 01 | Single Responsibility | `SOLID_01_single_responsibility.py` |
+| 02 | Open/Closed | `SOLID_02_open_closed.py` |
+| 03 | Liskov Substitution | `SOLID_03_liskov_substitution.py` |
+| 04 | Interface Segregation | `SOLID_04_interface_segregation.py` |
+| 05 | Dependency Inversion | `SOLID_05_dependency_inversion.py` |
 
 ### PSE_090 — Design Patterns (27 files)
 
@@ -230,8 +227,8 @@ Run any example directly with Python:
 python PSE_000_Python_Basics/PB_01_variables.py
 python PSE_030_Functions/06_decorators.py
 python PSE_060_Data_Structures/05_trees.py
-python PSE_070_OOP/abstraction.py
-python PSE_080_SOLID/01_srp.py
+python PSE_070_OOP/OOP_04_abstraction.py
+python PSE_080_SOLID/SOLID_01_single_responsibility.py
 python PSE_090_Design_Patterns/Creational/DP_C_01_singleton_pattern.py
 python PSE_090_Design_Patterns/Enterprise/AP_04_event_sourcing.py
 python PSE_100_System_Design/04_caching_system.py

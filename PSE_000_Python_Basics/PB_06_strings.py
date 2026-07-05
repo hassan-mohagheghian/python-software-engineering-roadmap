@@ -16,7 +16,7 @@
 # =============================================================================
 
 
-single = "Hello"
+single = 'Hello'
 double = "World"
 triple = """Multi-line
 string"""
@@ -112,7 +112,7 @@ print(f"Join with dash: {'-'.join(words)}")
 # Split
 csv_data = "apple,banana,cherry"
 print(f"Split: {csv_data.split(',')}")
-print(f"Splitlines: {'line1\\nline2\\nline3'.splitlines()}")
+print(f"Splitlines: {'line1\nline2\nline3'.splitlines()}")
 
 
 # =============================================================================
@@ -120,10 +120,10 @@ print(f"Splitlines: {'line1\\nline2\\nline3'.splitlines()}")
 # =============================================================================
 
 
-print("\nNewline:\\n -> 'Hello\\nWorld'")
-print("Tab:\\t -> 'Hello\\tWorld'")
-print("Backslash: \\\\")
-print("Quote: \\' and \\\"")
+print("\nNewline:\\n -> 'Hello\nWorld'")
+print("Tab:\\t -> 'Hello\tWorld'")
+print("Backslash: \\\\ -> This is Backslash \\")
+print("Quote: \\' and \\\" -> For ' and \" ")
 
 
 # =============================================================================
