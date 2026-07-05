@@ -118,6 +118,7 @@ ordered from beginner topics toward advanced engineering topics.
 - Mediator Pattern
 - Visitor Pattern
 - Memento Pattern
+- Interpreter Pattern
 
 ### System Design
 
