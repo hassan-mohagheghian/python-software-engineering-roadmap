@@ -222,7 +222,7 @@ def main():
 
     print("\n=== Merge with Unpacking ===")
     print(f"  Lists: {[*[1, 2], *[3, 4]]}")
-    print(f"  Dicts: {{**{'a': 1}, **{'b': 2}}}")
+    print(f"  Dicts: { {**{'a': 1}, **{'b': 2}} }")
 
 
 if __name__ == "__main__":
