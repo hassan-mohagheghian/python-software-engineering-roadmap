@@ -73,7 +73,7 @@ import json
 
 
 class HttpRequest:
-    def __init__(self, method: str, path: str, body=None):
+    def __init__(self, method: str, path: str, body: dict | None = None):
         self.method = method
         self.path = path
         self.body = body
@@ -118,7 +118,7 @@ class UserService:
         # POST /users
         if request.method == "POST" and request.path == "/users":
             new_id = max(self.users.keys()) + 1
-            self.users[new_id] = {"id": new_id, "name": request.body.get("name")}
+            self.users[new_id] = {"id": new_id, "name": request.body.get("name")}  # pyright: ignore[reportOptionalMemberAccess]
             return HttpResponse(201, self.users[new_id])
 
         return HttpResponse(400, {"error": "Bad request"})
