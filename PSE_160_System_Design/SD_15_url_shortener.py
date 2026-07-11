@@ -1,151 +1,175 @@
-# System Design - Pub/Sub System
+# System Design - URL Shortener
 # -----------------------------------------------------------------------------
-# Publish/Subscribe (Pub/Sub) is a messaging pattern where senders (publishers)
-# send messages to topics without knowing who will receive them. Receivers
-# (subscribers) express interest in topics and receive only relevant messages.
+# A URL Shortener converts long URLs into short, fixed-length aliases.
+# When a user visits the short URL, the system redirects to the original.
 #
-# Unlike a simple message queue (point-to-point), Pub/Sub is one-to-many:
-# a single published message can be delivered to multiple subscribers.
+# This is a classic system design problem that combines:
+# - Hashing / ID generation
+# - Database storage
+# - Caching for hot URLs
+# - Collision handling
 #
 # -----------------------------------------------------------------------------
 # Core Flow:
 #
-#   Publisher → Topic → Subscriber 1
-#                    → Subscriber 2
-#                    → Subscriber 3
+#   Shorten:  Long URL → Generate Short Key → Store (key → url) → Return key
+#   Redirect: Short Key → Lookup → Redirect to Long URL
 #
 # -----------------------------------------------------------------------------
-# Key Characteristics:
+# Key Design Decisions:
 #
-# 1. Decoupling
-#    - Publishers don't know about subscribers
-#    - Subscribers don't know about publishers
-#    - They only share the topic name
+# 1. Key Generation
+#    - Hash-based: MD5/SHA256 of URL, take first N chars
+#    - Counter-based: auto-increment ID, encode in base62
+#    - Random: generate random alphanumeric string
 #
-# 2. Broadcast
-#    - One message → many receivers
-#    - New subscribers can join without publisher changes
+# 2. Collision Handling
+#    - Check if key exists before storing
+#    - Append a salt and re-hash if collision occurs
 #
-# 3. Async Communication
-#    - Publisher doesn't wait for subscribers
-#    - Subscribers process at their own pace
+# 3. Read-Heavy System
+#    - Reads (redirects) >> Writes (shorten)
+#    - Cache popular URLs in memory
 #
 # -----------------------------------------------------------------------------
 # Real-world examples:
 #
-# - Google Cloud Pub/Sub, AWS SNS, Redis Pub/Sub
-# - Event-driven microservices
-# - Real-time notifications (chat, alerts)
-# - IoT sensor data distribution
-# - Log aggregation
+# - bit.ly, tinyurl.com, t.co (Twitter)
+# - Short links in marketing campaigns
+# - QR code friendly URLs
 # -----------------------------------------------------------------------------
 
-import time
-from dataclasses import dataclass, field
-from typing import Any, Callable
+import string
 
 # -----------------------------------------------------------------------------
-# Message
+# Base62 Encoding (a-z, A-Z, 0-9 = 62 characters)
 # -----------------------------------------------------------------------------
 
-
-@dataclass
-class Message:
-    topic: str
-    payload: dict[str, Any]
-    timestamp: float = field(default_factory=time.time)
-    message_id: str = ""
-
-    def __post_init__(self):
-        if not self.message_id:
-            self.message_id = f"msg_{int(self.timestamp * 1000)}"
+BASE62_CHARS = string.ascii_lowercase + string.ascii_uppercase + string.digits
 
 
-# -----------------------------------------------------------------------------
-# Subscriber (Callback-based)
-# -----------------------------------------------------------------------------
+def encode_base62(num: int) -> str:
+    """Convert an integer to a base62 string."""
+    if num == 0:
+        return BASE62_CHARS[0]
 
+    result = []
+    while num > 0:
+        result.append(BASE62_CHARS[num % 62])
+        num //= 62
 
-@dataclass
-class Subscriber:
-    name: str
-    callback: Callable[[Message], None]
-    received: list[Message] = field(default_factory=list)
-
-    def on_message(self, message: Message):
-        self.received.append(message)
-        self.callback(message)
+    return "".join(reversed(result))
 
 
 # -----------------------------------------------------------------------------
-# Topic
+# Database (simulated)
 # -----------------------------------------------------------------------------
 
 
-class Topic:
-    def __init__(self, name: str):
-        self.name = name
-        self.subscribers: list[Subscriber] = []
-        self.message_history: list[Message] = []
-
-    def subscribe(self, subscriber: Subscriber):
-        self.subscribers.append(subscriber)
-        print(f"  [{self.name}] {subscriber.name} subscribed")
-
-    def unsubscribe(self, subscriber: Subscriber):
-        self.subscribers.remove(subscriber)
-        print(f"  [{self.name}] {subscriber.name} unsubscribed")
-
-    def publish(self, message: Message):
-        message.topic = self.name
-        self.message_history.append(message)
-        print(f"  [{self.name}] Published: {message.payload}")
-
-        for subscriber in self.subscribers:
-            subscriber.on_message(message)
-
-
-# -----------------------------------------------------------------------------
-# Pub/Sub Broker
-# -----------------------------------------------------------------------------
-
-
-class PubSubBroker:
-    """
-    Central broker that manages topics and routes messages.
-    Simulates systems like Redis Pub/Sub or Google Cloud Pub/Sub.
-    """
-
+class URLDatabase:
     def __init__(self):
-        self.topics: dict[str, Topic] = {}
+        self._store: dict[str, str] = {}
+        self._counter = 100000  # Starting counter for base62 encoding
 
-    def create_topic(self, name: str) -> Topic:
-        if name not in self.topics:
-            self.topics[name] = Topic(name)
-            print(f"  [Broker] Created topic: {name}")
-        return self.topics[name]
+    def save(self, short_key: str, long_url: str):
+        self._store[short_key] = long_url
+        print(f"  [DB] Stored: {short_key} → {long_url}")
 
-    def subscribe(self, topic_name: str, subscriber: Subscriber):
-        topic = self.topics.get(topic_name)
-        if not topic:
-            topic = self.create_topic(topic_name)
-        topic.subscribe(subscriber)
+    def get(self, short_key: str) -> str | None:
+        return self._store.get(short_key)
 
-    def publish(self, topic_name: str, payload: dict[str, Any]):
-        topic = self.topics.get(topic_name)
-        if not topic:
-            topic = self.create_topic(topic_name)
-        message = Message(topic=topic_name, payload=payload)
-        topic.publish(message)
+    def exists(self, short_key: str) -> bool:
+        return short_key in self._store
 
-    def get_topic_stats(self) -> dict:
-        stats = {}
-        for name, topic in self.topics.items():
-            stats[name] = {
-                "subscribers": len(topic.subscribers),
-                "messages": len(topic.message_history),
-            }
-        return stats
+    def next_id(self) -> int:
+        self._counter += 1
+        return self._counter
+
+
+# -----------------------------------------------------------------------------
+# Cache (simulates Redis / Memcached)
+# -----------------------------------------------------------------------------
+
+
+class URLCache:
+    def __init__(self, max_size: int = 100):
+        self._store: dict[str, str] = {}
+        self._hits = 0
+        self._misses = 0
+        self._max_size = max_size
+
+    def get(self, key: str) -> str | None:
+        value = self._store.get(key)
+        if value:
+            self._hits += 1
+            print(f"  [CACHE] Hit for: {key}")
+        else:
+            self._misses += 1
+        return value
+
+    def set(self, key: str, value: str):
+        if len(self._store) >= self._max_size:
+            # Evict oldest entry (simple FIFO for demo)
+            oldest = next(iter(self._store))
+            del self._store[oldest]
+        self._store[key] = value
+
+    def stats(self) -> dict:
+        total = self._hits + self._misses
+        rate = (self._hits / total * 100) if total > 0 else 0
+        return {"hits": self._hits, "misses": self._misses, "hit_rate": f"{rate:.1f}%"}
+
+
+# -----------------------------------------------------------------------------
+# URL Shortener Service
+# -----------------------------------------------------------------------------
+
+
+class URLShortener:
+    def __init__(
+        self, db: URLDatabase, cache: URLCache, base_url: str = "https://sho.rt"
+    ):
+        self.db = db
+        self.cache = cache
+        self.base_url = base_url
+
+    def shorten(self, long_url: str) -> str:
+        """Create a short URL for the given long URL."""
+        # Generate short key using counter-based approach
+        url_id = self.db.next_id()
+        short_key = encode_base62(url_id)
+
+        # Handle collision (unlikely with counter, but shown for completeness)
+        while self.db.exists(short_key):
+            url_id = self.db.next_id()
+            short_key = encode_base62(url_id)
+
+        # Store in database
+        self.db.save(short_key, long_url)
+
+        # Pre-populate cache
+        self.cache.set(short_key, long_url)
+
+        return f"{self.base_url}/{short_key}"
+
+    def redirect(self, short_url: str) -> str | None:
+        """Resolve a short URL to its original long URL."""
+        # Extract key from URL
+        short_key = short_url.split("/")[-1]
+
+        # 1. Check cache first
+        long_url = self.cache.get(short_key)
+        if long_url:
+            return long_url
+
+        # 2. Query database
+        print(f"  [CACHE] Miss for: {short_key}")
+        long_url = self.db.get(short_key)
+        if long_url:
+            # Populate cache for future lookups
+            self.cache.set(short_key, long_url)
+
+        return long_url
 
 
 # -----------------------------------------------------------------------------
@@ -154,52 +178,40 @@ class PubSubBroker:
 
 
 def main():
-    broker = PubSubBroker()
+    db = URLDatabase()
+    cache = URLCache()
+    shortener = URLShortener(db, cache)
 
-    # Create topics
-    broker.create_topic("orders")
-    broker.create_topic("notifications")
+    # Shorten some URLs
+    print("--- Shortening URLs ---")
+    urls = [
+        "https://www.example.com/very/long/path/to/resource?id=12345",
+        "https://docs.python.org/3/library/hashlib.html",
+        "https://github.com/user/repo/blob/main/src/long_file_name.py",
+    ]
 
-    # Create subscribers with callbacks
-    def order_logger(msg: Message):
-        print(f"    [Logger] Order received: {msg.payload}")
+    short_urls = []
+    for url in urls:
+        short = shortener.shorten(url)
+        short_urls.append(short)
+        print(f"  {url}\n  → {short}\n")
 
-    def inventory_service(msg: Message):
-        print(f"    [Inventory] Updating stock for: {msg.payload.get('product')}")
+    # Redirect (lookup)
+    print("--- Redirecting ---")
+    for short_url in short_urls:
+        original = shortener.redirect(short_url)
+        print(f"  {short_url}\n  → {original}\n")
 
-    def email_service(msg: Message):
-        print(f"    [Email] Sending confirmation to: {msg.payload.get('customer')}")
+    # Cache hit on second lookup
+    print("--- Second Lookup (cache hit) ---")
+    shortener.redirect(short_urls[0])
 
-    def analytics_service(msg: Message):
-        print(f"    [Analytics] Tracking event: {msg.topic}")
-
-    # Subscribe to topics
-    print("\n--- Setting up subscriptions ---")
-    broker.subscribe("orders", Subscriber("OrderLogger", order_logger))
-    broker.subscribe("orders", Subscriber("InventoryService", inventory_service))
-    broker.subscribe("orders", Subscriber("EmailService", email_service))
-    broker.subscribe("notifications", Subscriber("AnalyticsService", analytics_service))
-
-    # Publish messages
-    print("\n--- Publishing to 'orders' ---")
-    broker.publish(
-        "orders",
-        {"order_id": 1001, "product": "Laptop", "customer": "alice@example.com"},
+    # Cache stats
+    print("\n--- Cache Stats ---")
+    stats = cache.stats()
+    print(
+        f"  Hits: {stats['hits']}, Misses: {stats['misses']}, Hit Rate: {stats['hit_rate']}"
     )
-
-    print("\n--- Publishing to 'notifications' ---")
-    broker.publish(
-        "notifications",
-        {"type": "page_view", "user": "user_42", "page": "/products"},
-    )
-
-    # Show stats
-    print("\n--- Topic Stats ---")
-    stats = broker.get_topic_stats()
-    for topic, info in stats.items():
-        print(
-            f"  {topic}: {info['subscribers']} subscribers, {info['messages']} messages"
-        )
 
 
 if __name__ == "__main__":
