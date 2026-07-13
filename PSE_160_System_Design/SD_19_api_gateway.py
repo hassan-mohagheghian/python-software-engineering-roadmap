@@ -234,7 +234,7 @@ class APIGateway:
             token = request.headers.get("Authorization", "")
             user_id = self.auth.validate(token)
             if not user_id:
-                print(f"  [Gateway] 401 — invalid or missing token")
+                print("  [Gateway] 401 — invalid or missing token")
                 return Response(401, {"error": "Unauthorized"})
             request.user_id = user_id
             print(f"  [Gateway] Auth OK — user={user_id}")
@@ -254,9 +254,7 @@ class APIGateway:
 
         # 5. Forward to service (simulated)
         target_path = route.target_path + request.path[len(route.path_prefix) :]
-        print(
-            f"  [Gateway] Forwarding → {instance}{target_path}"
-        )
+        print(f"  [Gateway] Forwarding → {instance}{target_path}")
         return Response(
             200,
             {
