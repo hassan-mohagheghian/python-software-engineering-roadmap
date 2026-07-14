@@ -43,11 +43,9 @@
 
 from __future__ import annotations
 
-from abc import ABC, abstractmethod
 from dataclasses import dataclass, field
 from datetime import datetime
-from typing import Any, Dict, List
-
+from typing import Dict, List
 
 # =============================================================================
 # Event Base
@@ -57,6 +55,7 @@ from typing import Any, Dict, List
 @dataclass(frozen=True)
 class Event:
     """Immutable record of something that happened."""
+
     timestamp: str = field(default_factory=lambda: datetime.now().isoformat())
 
 
@@ -98,7 +97,7 @@ class EventStore:
     def append(self, event: Event):
         self._events.append(event)
 
-    def get_events(self, account_id: str = None) -> List[Event]:
+    def get_events(self, account_id: str | None = None) -> List[Event]:
         if account_id is None:
             return list(self._events)
         return [e for e in self._events if getattr(e, "account_id", None) == account_id]
@@ -151,7 +150,9 @@ class BankService:
         self.event_store = event_store
 
     def open_account(self, account_id: str, owner: str, initial: float = 0.0):
-        event = AccountOpened(account_id=account_id, owner=owner, initial_balance=initial)
+        event = AccountOpened(
+            account_id=account_id, owner=owner, initial_balance=initial
+        )
         self.event_store.append(event)
 
     def deposit(self, account_id: str, amount: float):
@@ -179,9 +180,13 @@ class BalanceProjection:
             if isinstance(event, AccountOpened):
                 self.balances[event.account_id] = event.initial_balance
             elif isinstance(event, MoneyDeposited):
-                self.balances[event.account_id] = self.balances.get(event.account_id, 0) + event.amount
+                self.balances[event.account_id] = (
+                    self.balances.get(event.account_id, 0) + event.amount
+                )
             elif isinstance(event, MoneyWithdrawn):
-                self.balances[event.account_id] = self.balances.get(event.account_id, 0) - event.amount
+                self.balances[event.account_id] = (
+                    self.balances.get(event.account_id, 0) - event.amount
+                )
 
 
 # =============================================================================
