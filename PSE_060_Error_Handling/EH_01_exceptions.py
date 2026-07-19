@@ -30,22 +30,11 @@ def safe_divide(a: int, b: int) -> float | None:
 # =============================================================================
 
 
-def safe_convert(value: str) -> int | None:
+def safe_index(the_list: list, index: int):
     try:
-        return int(value)
-    except ValueError:
-        print(f"'{value}' is not a valid integer")
-        return None
-    except TypeError:
-        print(f"Expected string, got {type(value).__name__}")
-        return None
-
-
-def safe_index(lst: list, index: int):
-    try:
-        return lst[index]
+        return the_list[index]
     except IndexError:
-        print(f"Index {index} out of range (length {len(lst)})")
+        print(f"Index {index} out of range (length {len(the_list)})")
         return None
     except TypeError as e:
         print(f"Type error: {e}")
@@ -154,7 +143,7 @@ def process_data(data: dict):
 # 1. Be specific with exceptions
 def good_example():
     try:
-        result = int("abc")
+        _result = int("abc")
     except ValueError:  # Good — specific exception
         print("Caught specific exception")
 
@@ -162,8 +151,8 @@ def good_example():
 # 2. Don't suppress exceptions silently
 def bad_example():
     try:
-        result = int("abc")
-    except:  # Bad — catches everything including KeyboardInterrupt
+        _result = int("abc")
+    except:  # Bad — catches everything including KeyboardInterrupt  # noqa: E722
         pass  # Bad — silently swallows error
 
 
@@ -198,14 +187,10 @@ def main():
     print(f"10 / 0 = {safe_divide(10, 0)}")
 
     print("\n=== Multiple Exceptions ===")
-    print(f"Convert '42': {safe_convert('42')}")
-    print(f"Convert 'abc': {safe_convert('abc')}")
-    print(f"Convert 42: {safe_convert(42)}")
-
-    print("\n=== Index Safety ===")
-    lst = [1, 2, 3]
-    print(f"Index 1: {safe_index(lst, 1)}")
-    print(f"Index 10: {safe_index(lst, 10)}")
+    numbers = [1, 2, 3]
+    print(f"Index 1: {safe_index(numbers, 1)}")
+    print(f"Index 10: {safe_index(numbers, 10)}")
+    print(f"Index '10': {safe_index(numbers, '10')}")  # pyright: ignore[reportArgumentType]
 
     print("\n=== else/finally ===")
     result = read_file_safe("nonexistent.txt")
