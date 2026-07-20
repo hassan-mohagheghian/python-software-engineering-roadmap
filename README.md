@@ -13,19 +13,35 @@ and modified without needing a full application setup.
 ## Repository Structure
 
 ```text
-PSE_000_Python_Basics/       Variables, types, loops, strings, lists, dicts, tuples, sets
-PSE_010_Input_Output/        stdin, file I/O, CSV, JSON, pathlib
-PSE_020_Modules/             Imports, packages, pip, __name__
-PSE_030_Functions/           Basics, args/kwargs, lambda, closures, decorators
-PSE_040_Classes/             Attributes, access control, dataclasses
-PSE_050_Error_Handling/      try/except, custom exceptions, best practices
-PSE_060_Data_Structures/     Lists, dicts, sets, stacks, queues, trees, graphs
-PSE_070_OOP/                 13 core OOP concepts
-PSE_080_SOLID/               5 SOLID principles with examples
-PSE_090_Design_Patterns/     23 GoF + 4 enterprise patterns
-PSE_100_System_Design/       15 distributed systems topics
-PSE_200_Concurrency/         Threads, multiprocessing, async/await
-PSE_300_Advanced_Patterns/   Repository, DI, Unit of Work, Event Sourcing
+PSE_000_Python_Basics/         Variables, types, loops, strings, lists, dicts, tuples, sets
+PSE_010_Functions/             Basics, parameters, args/kwargs, lambda, closures, decorators
+PSE_020_Builtins/              range, enumerate, zip, map, filter, sorted, any/all
+PSE_030_Iterators_Generators/  Iterable, iterator, generator, yield
+PSE_040_Input_Output/          stdin, print, file I/O, pathlib, serialization
+PSE_050_Modules/               Imports, packages, venv, dependency management
+PSE_060_Error_Handling/        Exceptions, custom exceptions, context managers
+PSE_070_Classes/               Attributes, methods, properties, dataclasses
+PSE_080_OOP/                   12 core OOP concepts
+PSE_090_Data_Structures/       Stack, queue, linked list, heap, tree, graph
+PSE_100_Type_Hints/            Basic typing, generics, protocols, type aliases
+PSE_110_Concurrency/           CPU vs IO bound, threads, multiprocessing, asyncio
+PSE_120_SOLID/                 5 SOLID principles with examples
+PSE_130_Design_Patterns/       23 GoF + 1 behavioral patterns
+PSE_135_Architectural_Patterns/ 5 enterprise architectural patterns
+PSE_140_Testing/               unittest, pytest, mocking, fixtures
+PSE_150_Standard_Library/      collections, itertools, functools, datetime, json, logging
+PSE_160_System_Design/         17 distributed systems topics
+PSE_170_Algorithms/            Big-O complexity, algorithm analysis
+PSE_180_CLI_Frameworks/        argparse, click, typer
+PSE_190_Serialization/         pydantic, orjson, yaml, toml, msgpack
+PSE_200_Logging_Advanced/      structlog, loguru
+PSE_210_HTTP_Client/           httpx, requests
+PSE_220_Database/              SQLAlchemy ORM, sqlite3
+PSE_230_Web_Frameworks/        FastAPI, Flask
+PSE_240_Terminal_UI/           rich, textual
+PSE_250_GUI/                   tkinter (standard library)
+PSE_260_Packaging/             pyproject.toml, uv package manager
+PSE_270_Capstone/              Full API server project
 ```
 
 Folder names use this convention:
@@ -35,25 +51,41 @@ PSE_<NUMBER>_<TOPIC_NAME>
 ```
 
 `PSE` means Python Software Engineering. Numbers follow a learning path from
-000 (beginner) to 300 (expert), with gaps for future expansion.
+000 (beginner) to 270 (advanced).
 
-## Learning Path (000 → 300)
+## Learning Path (000 → 270)
 
 | Level | Folder | Topic | What You Learn |
 |-------|--------|-------|----------------|
 | 000 | PSE_000 | Python Basics | Variables, types, control flow, collections |
-| 010 | PSE_010 | Input / Output | stdin, files, CSV, JSON, pathlib |
-| 020 | PSE_020 | Modules | Imports, packages, pip, \_\_name\_\_ |
-| 030 | PSE_030 | Functions | Parameters, args/kwargs, lambda, closures, decorators |
-| 040 | PSE_040 | Classes | Attributes, access control, dataclasses |
-| 050 | PSE_050 | Error Handling | try/except, custom exceptions, best practices |
-| 060 | PSE_060 | Data Structures | Lists, dicts, sets, stacks, queues, trees, graphs |
-| 070 | PSE_070 | OOP | 13 core OOP concepts |
-| 080 | PSE_080 | SOLID | 5 SOLID principles with examples |
-| 090 | PSE_090 | Design Patterns | 23 GoF + 4 enterprise patterns |
-| 100 | PSE_100 | System Design | 15 distributed systems topics |
-| 200 | PSE_200 | Concurrency | Threads, multiprocessing, async/await |
-| 300 | PSE_300 | Advanced Patterns | Repository, DI, Unit of Work, Event Sourcing |
+| 010 | PSE_010 | Functions | Parameters, return values, scope, closures, decorators |
+| 020 | PSE_020 | Builtins | range, enumerate, zip, map, filter, sorted |
+| 030 | PSE_030 | Iterators / Generators | Iterable protocol, generator functions, yield |
+| 040 | PSE_040 | Input / Output | print, input, file I/O, pathlib, serialization |
+| 050 | PSE_050 | Modules | Imports, packages, virtual environments, pip |
+| 060 | PSE_060 | Error Handling | try/except, custom exceptions, context managers |
+| 070 | PSE_070 | Classes | Attributes, methods, properties, dataclasses |
+| 080 | PSE_080 | OOP | 12 core OOP concepts |
+| 090 | PSE_090 | Data Structures | Stack, queue, linked list, heap, tree, graph |
+| 100 | PSE_100 | Type Hints | Basic typing, generics, protocols |
+| 110 | PSE_110 | Concurrency | Threads, multiprocessing, async/await |
+| 120 | PSE_120 | SOLID | 5 SOLID principles with examples |
+| 130 | PSE_130 | Design Patterns | 23 GoF + 1 behavioral patterns |
+| 135 | PSE_135 | Architectural Patterns | 5 enterprise architectural patterns |
+| 140 | PSE_140 | Testing | unittest, pytest, mocking, fixtures |
+| 150 | PSE_150 | Standard Library | collections, itertools, functools, datetime, json |
+| 160 | PSE_160 | System Design | 17 distributed systems topics |
+| 170 | PSE_170 | Algorithms | Big-O complexity, algorithm analysis |
+| 180 | PSE_180 | CLI Frameworks | argparse, click, typer |
+| 190 | PSE_190 | Serialization | pydantic, orjson, yaml, toml, msgpack |
+| 200 | PSE_200 | Logging Advanced | structlog, loguru |
+| 210 | PSE_210 | HTTP Client | httpx, requests |
+| 220 | PSE_220 | Database | SQLAlchemy ORM, sqlite3 |
+| 230 | PSE_230 | Web Frameworks | FastAPI, Flask |
+| 240 | PSE_240 | Terminal UI | rich, textual |
+| 250 | PSE_250 | GUI | tkinter (standard library) |
+| 260 | PSE_260 | Packaging | pyproject.toml, uv |
+| 270 | PSE_270 | Capstone | Full API server project |
 
 ## Topics Covered
 
@@ -61,66 +93,97 @@ PSE_<NUMBER>_<TOPIC_NAME>
 
 | # | File | Topics |
 |---|------|--------|
-| 1 | `PB_01_variables.py` | Variables, dynamic typing, unpacking |
-| 2 | `PB_02_data_types.py` | int, float, str, bool, None |
-| 3 | `PB_03_conditionals.py` | if / elif / else, ternary |
-| 4 | `PB_04_loops.py` | for, while, enumerate, zip |
-| 5 | `PB_06_strings.py` | String operations, formatting |
-| 6 | `PB_07_lists.py` | Lists, slicing, comprehensions |
-| 7 | `PB_08_dictionaries.py` | Dicts, comprehensions |
-| 8 | `PB_09_tuples.py` | Tuples, named tuples |
-| 9 | `PB_10_sets.py` | Sets, frozenset, set operations |
+| 01 | `PB_01_variables.py` | Variables, dynamic typing, unpacking |
+| 02 | `PB_02_data_types.py` | int, float, str, bool, None |
+| 03 | `PB_06_strings.py` | String operations, formatting |
+| 04 | `PB_07_conditionals.py` | if / elif / else, ternary |
+| 05 | `PB_08_loops.py` | for, while, enumerate, zip |
+| 06 | `PB_09_lists.py` | Lists, slicing, comprehensions |
+| 07 | `PB_10_tuples.py` | Tuples, named tuples |
+| 08 | `PB_11_dictionaries.py` | Dicts, comprehensions |
+| 09 | `PB_12_sets.py` | Sets, frozenset, set operations |
 
-### PSE_010 — Input / Output (1 file)
-
-| # | File | Topic |
-|---|------|-------|
-| 1 | `IO_01_file_io.py` | stdin, file read/write, CSV, JSON, pathlib |
-
-### PSE_020 — Modules (1 file)
+### PSE_010 — Functions (9 files)
 
 | # | File | Topic |
 |---|------|-------|
-| 1 | `MDL_01_modules_and_packages.py` | Imports, stdlib, creating modules, \_\_name\_\_ |
+| 01 | `FN_01_basic_functions.py` | def, params, return, docstrings |
+| 02 | `FN_02_parameters.py` | Positional, keyword, default, \*args, \*\*kwargs |
+| 03 | `FN_03_return_values.py` | Return types, multiple returns, tuples |
+| 04 | `FN_04_scope.py` | LEGB rule, global, nonlocal |
+| 05 | `FN_05_args_kwargs.py` | \*args, \*\*kwargs, combined signatures |
+| 06 | `FN_06_lambda.py` | Lambdas, map, filter, sorted |
+| 07 | `FN_07_first_class_functions.py` | Passing and returning functions |
+| 08 | `FN_08_closures.py` | nonlocal, factory functions |
+| 09 | `FN_09_decorators.py` | @syntax, stacking, practical examples |
 
-### PSE_030 — Functions (6 files)
-
-| # | File | Topic |
-|---|------|-------|
-| 1 | `01_basic_functions.py` | def, params, return, docstrings |
-| 2 | `02_args_and_kwargs.py` | \*args, \*\*kwargs, combined signatures |
-| 3 | `03_lambda_functions.py` | Lambdas, map, filter, sorted |
-| 4 | `04_first_class_functions.py` | Passing and returning functions |
-| 5 | `05_closures.py` | nonlocal, factory functions |
-| 6 | `06_decorators.py` | @syntax, stacking, practical examples |
-
-### PSE_040 — Classes (4 files)
+### PSE_020 — Builtins (10 files)
 
 | # | File | Topic |
 |---|------|-------|
-| 1 | `01_class_basics.py` | class, \_\_init\_\_, self, instance vs class attrs |
-| 2 | `02_access_control.py` | public, protected (\_), private (\_\_) |
-| 3 | `03_private_attributes.py` | Name mangling, double underscore |
-| 4 | `04_dataclasses.py` | @dataclass, field, frozen |
+| 01 | `BI_01_range.py` | range, sequences, loops |
+| 02 | `BI_02_enumerate.py` | Index + value iteration |
+| 03 | `BI_03_zip.py` | Combining iterables |
+| 04 | `BI_04_map.py` | Applying functions to iterables |
+| 05 | `BI_05_filter.py` | Filtering elements |
+| 06 | `BI_06_sorted.py` | Sorting with key functions |
+| 07 | `BI_07_reversed.py` | Reversing sequences |
+| 08 | `BI_08_any_all.py` | Boolean aggregation |
+| 09 | `BI_09_sum_min_max.py` | Numeric builtins |
+| 10 | `BI_10_iter_next.py` | Iterator protocol |
 
-### PSE_050 — Error Handling (1 file)
+### PSE_030 — Iterators / Generators (5 files)
 
 | # | File | Topic |
 |---|------|-------|
-| 1 | `EH_01_error_handling.py` | try/except, custom exceptions, chaining, best practices |
+| 01 | `IT_01_iterable.py` | \_\_iter\_\_, \_\_next\_\_, for loop protocol |
+| 02 | `IT_02_iterator.py` | Iterator protocol, custom iterators |
+| 03 | `IT_03_generator.py` | Generator functions, lazy evaluation |
+| 04 | `IT_04_yield.py` | yield, yield from, send() |
+| 05 | `IT_05_generator_expression.py` | (expr for x in ...) syntax |
 
-### PSE_060 — Data Structures (6 files)
+### PSE_040 — Input / Output (4 files)
 
 | # | File | Topic |
 |---|------|-------|
-| 1 | `01_lists_and_arrays.py` | List as stack/queue, slicing, comprehensions |
-| 2 | `02_dictionaries_as_maps.py` | defaultdict, Counter, nested dicts |
-| 3 | `03_sets_and_relationships.py` | Union, intersection, frozenset |
-| 4 | `04_stacks_and_queues.py` | LIFO/FIFO, deque, balanced parentheses, BFS |
-| 5 | `05_trees.py` | TreeNode, BST, in/pre/post-order traversal |
-| 6 | `06_graphs.py` | Adjacency list, BFS, DFS, path check |
+| 01 | `IO_01_print_input.py` | print(), input(), formatting |
+| 02 | `IO_02_file_io.py` | open(), read/write, context managers |
+| 03 | `IO_03_pathlib.py` | Path objects, glob, file operations |
+| 04 | `IO_04_serialization.py` | json, pickle, csv |
 
-### PSE_070 — OOP (13 files)
+### PSE_050 — Modules (4 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `MD_01_import.py` | import, from, as, \_\_name\_\_ |
+| 02 | `MD_02_packages.py` | \_\_init\_\_, subpackages, relative imports |
+| 03 | `MD_03_virtual_environment.py` | venv, pip, pyproject.toml |
+| 04 | `MD_04_dependency_management.py` | Requirements files, lock files |
+
+### PSE_060 — Error Handling (3 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `EH_01_exceptions.py` | try/except/finally, exception hierarchy |
+| 02 | `EH_02_custom_exceptions.py` | Raising, custom error classes |
+| 03 | `EH_03_context_managers.py` | with statement, \_\_enter\_\_/\_\_exit\_\_ |
+
+### PSE_070 — Classes (10 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `CL_01_class_basics.py` | class, \_\_init\_\_, self |
+| 02 | `CL_02_instance_attributes.py` | Instance variables, initialization |
+| 03 | `CL_03_class_attributes.py` | Class-level state, shared data |
+| 04 | `CL_04_instance_methods.py` | def methods, self parameter |
+| 05 | `CL_05_class_methods.py` | @classmethod, factory methods |
+| 06 | `CL_06_static_methods.py` | @staticmethod, utility functions |
+| 07 | `CL_07_properties.py` | @property, getters, setters |
+| 08 | `CL_08_private_attributes.py` | Name mangling, double underscore |
+| 09 | `CL_09_magic_methods.py` | \_\_str\_\_, \_\_repr\_\_, \_\_len\_\_, operators |
+| 10 | `CL_10_dataclasses.py` | @dataclass, field, frozen |
+
+### PSE_080 — OOP (12 files)
 
 | # | Concept | File |
 |---|---------|------|
@@ -132,13 +195,42 @@ PSE_<NUMBER>_<TOPIC_NAME>
 | 06 | Aggregation | `OOP_06_aggregation.py` |
 | 07 | Association | `OOP_07_association.py` |
 | 08 | Delegation | `OOP_08_delegation.py` |
-| 09 | Abstract Class | `OOP_09_abstract_class.py` |
-| 10 | Interface | `OOP_10_interface.py` |
-| 11 | Duck Typing | `OOP_11_duck_typing.py` |
-| 12 | Protocol | `OOP_12_protocol.py` |
-| 13 | Mixin | `OOP_13_mixin.py` |
+| 09 | Abstract Classes | `OOP_09_abstract_classes.py` |
+| 10 | Duck Typing | `OOP_10_duck_typing.py` |
+| 11 | Protocols | `OOP_11_protocols.py` |
+| 12 | Mixins | `OOP_12_mixins.py` |
 
-### PSE_080 — SOLID Principles (5 files)
+### PSE_090 — Data Structures (6 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `DS_01_stack.py` | LIFO, push/pop, balanced parentheses |
+| 02 | `DS_02_queue.py` | FIFO, deque, BFS |
+| 03 | `DS_03_linked_list.py` | Singly/doubly linked nodes |
+| 04 | `DS_04_heap.py` | Min/max heap, heapq |
+| 05 | `DS_05_tree.py` | TreeNode, BST, traversal |
+| 06 | `DS_06_graph.py` | Adjacency list, BFS, DFS |
+
+### PSE_100 — Type Hints (4 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `TH_01_basic_typing.py` | int, str, List, Dict, Optional |
+| 02 | `TH_02_generics.py` | TypeVar, Generic, Callable |
+| 03 | `TH_03_protocols.py` | Structural subtyping |
+| 04 | `TH_04_type_alias.py` | Type aliases, NewType |
+
+### PSE_110 — Concurrency (5 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `CC_01_cpu_vs_io_bound.py` | When to use threads vs processes |
+| 02 | `CC_02_threads.py` | threading, Lock, GIL, thread safety |
+| 03 | `CC_03_multiprocessing.py` | Process Pool, parallel CPU work |
+| 04 | `CC_04_asyncio.py` | Event loop, coroutines, gather |
+| 05 | `CC_05_async_await.py` | async def, await, async queues |
+
+### PSE_120 — SOLID Principles (5 files)
 
 | # | Principle | File |
 |---|-----------|------|
@@ -148,7 +240,7 @@ PSE_<NUMBER>_<TOPIC_NAME>
 | 04 | Interface Segregation | `SOLID_04_interface_segregation.py` |
 | 05 | Dependency Inversion | `SOLID_05_dependency_inversion.py` |
 
-### PSE_090 — Design Patterns (27 files)
+### PSE_130 — Design Patterns (24 files)
 
 | Category | # | Pattern | File |
 |---|---|---------|------|
@@ -175,50 +267,138 @@ PSE_<NUMBER>_<TOPIC_NAME>
 | | 9 | Visitor | `Behavioral/DP_B_09_visitor_pattern.py` |
 | | 10 | Memento | `Behavioral/DP_B_10_memento_pattern.py` |
 | | 11 | Interpreter | `Behavioral/DP_B_11_interpreter_pattern.py` |
-| **Enterprise** | 1 | Repository | `Enterprise/AP_01_repository.py` |
-| | 2 | Dependency Injection | `Enterprise/AP_02_dependency_injection.py` |
-| | 3 | Unit of Work | `Enterprise/AP_03_unit_of_work.py` |
-| | 4 | Event Sourcing | `Enterprise/AP_04_event_sourcing.py` |
+| | 12 | Null Object | `Behavioral/DP_B_12_null_object_pattern.py` |
 
-All 23 classic Gang of Four patterns + 4 enterprise patterns.
+All 23 classic Gang of Four patterns + 1 additional behavioral pattern (Null Object).
 
-### PSE_100 — System Design (15 files)
+### PSE_135 — Architectural Patterns (5 files)
 
-| # | File | Topic |
-|---|------|-------|
-| 1 | `01_client_service_model.py` | Client-server architecture |
-| 2 | `02_http_rest.py` | HTTP methods, REST API design |
-| 3 | `03_dns_and_load_balancing.py` | DNS, load balancing, GeoDNS |
-| 4 | `04_caching_system.py` | Cache-aside pattern, cache vs DB |
-| 5 | `05_rate_limiting_system.py` | Token bucket, sliding window |
-| 6 | `06_message_queue.py` | Pub/sub, task queues |
-| 7 | `07_database_replication.py` | Primary-replica, read replicas |
-| 8 | `08_microservices_architecture.py` | Service decomposition, API gateway |
-| 9 | `09_consistent_hashing.py` | Hash rings, virtual nodes |
-| 10 | `10_url_shortener.py` | Encoding, redirection, analytics |
-| 11 | `11_pagination.py` | Offset, cursor-based, keyset |
-| 12 | `12_database_indexing.py` | B-tree, composite indexes |
-| 13 | `13_proxy_forward_reverse.py` | Forward proxy, reverse proxy |
-| 14 | `14_database_sharding.py` | Horizontal partitioning, shard keys |
-| 15 | `15_pub_sub_system.py` | Topics, subscribers, fan-out |
+| # | Pattern | File |
+|---|---------|------|
+| 01 | Repository | `AP_01_repository.py` |
+| 02 | Dependency Injection | `AP_02_dependency_injection.py` |
+| 03 | Unit of Work | `AP_03_unit_of_work.py` |
+| 04 | Event Sourcing | `AP_04_event_sourcing.py` |
+| 05 | CQRS | `AP_05_cqrs.py` |
 
-### PSE_200 — Concurrency (4 files)
+### PSE_140 — Testing (4 files)
 
 | # | File | Topic |
 |---|------|-------|
-| 1 | `01_sync_vs_async.py` | Blocking vs non-blocking I/O |
-| 2 | `02_threads.py` | threading, Lock, GIL, thread safety |
-| 3 | `03_multiprocessing.py` | Process Pool, parallel CPU work |
-| 4 | `04_async_await.py` | Coroutines, gather, queues, producer-consumer |
+| 01 | `TS_01_unittest.py` | TestCase, setUp, assertions |
+| 02 | `TS_02_pytest.py` | pytest syntax, parametrize |
+| 03 | `TS_03_mocking.py` | unittest.mock, patch |
+| 04 | `TS_04_fixtures.py` | pytest fixtures, scope, teardown |
 
-### PSE_300 — Advanced Patterns (4 files)
+### PSE_150 — Standard Library (8 files)
 
 | # | File | Topic |
 |---|------|-------|
-| 1 | `01_testing.py` | unittest, pytest, test organization |
-| 2 | `02_type_checking.py` | Type hints, Protocol, generics |
-| 3 | `03_packaging.py` | pyproject.toml, uv, project layout |
-| 4 | `04_logging.py` | Levels, handlers, RotatingFileHandler |
+| 01 | `SL_01_collections.py` | defaultdict, Counter, deque, namedtuple |
+| 02 | `SL_02_itertools.py` | chain, product, combinations, permutations |
+| 03 | `SL_03_functools.py` | reduce, partial, lru_cache, wraps |
+| 04 | `SL_04_datetime.py` | date, time, timedelta, strftime |
+| 05 | `SL_05_pathlib.py` | Path, glob, suffix, parent |
+| 06 | `SL_06_json.py` | dumps, loads, custom encoding |
+| 07 | `SL_07_csv.py` | reader, writer, DictReader |
+| 08 | `SL_08_logging.py` | levels, handlers, basicConfig |
+
+### PSE_160 — System Design (17 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `SD_01_client_server.py` | Client-server architecture |
+| 02 | `SD_02_http_rest.py` | HTTP methods, REST API design |
+| 03 | `SD_03_dns.py` | DNS resolution, load balancing |
+| 04 | `SD_04_load_balancing.py` | Round-robin, least connections |
+| 05 | `SD_05_caching.py` | Cache-aside pattern, cache vs DB |
+| 06 | `SD_06_rate_limiting.py` | Token bucket, sliding window |
+| 07 | `SD_07_message_queue.py` | Pub/sub, task queues |
+| 08 | `SD_08_database_replication.py` | Primary-replica, read replicas |
+| 09 | `SD_09_database_indexing.py` | B-tree, composite indexes |
+| 10 | `SD_10_sharding.py` | Horizontal partitioning, shard keys |
+| 11 | `SD_11_consistent_hashing.py` | Hash rings, virtual nodes |
+| 12 | `SD_12_proxy.py` | Forward proxy, reverse proxy |
+| 13 | `SD_13_microservices.py` | Service decomposition, API gateway |
+| 14 | `SD_14_pub_sub.py` | Topics, subscribers, fan-out |
+| 15 | `SD_15_url_shortener.py` | Encoding, redirection, analytics |
+| 16 | `SD_16_cdn.py` | Edge caching, geographic routing |
+| 17 | `SD_17_cap_theorem.py` | Consistency, availability, partition tolerance |
+
+### PSE_170 — Algorithms (1 file)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `AL_01_big_o.py` | O(1), O(log n), O(n), O(n²), space complexity |
+
+### PSE_180 — CLI Frameworks (3 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `CLI_01_argparse.py` | argparse, subcommands, argument groups |
+| 02 | `CLI_02_click.py` | click decorators, options, groups |
+| 03 | `CLI_03_typer.py` | typer with type hints, enums |
+
+### PSE_190 — Serialization (2 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `SER_01_pydantic.py` | Pydantic models, validation, serialization |
+| 02 | `SER_02_json_formats.py` | json, orjson, yaml, toml, msgpack |
+
+### PSE_200 — Logging Advanced (2 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `LOG_01_structlog.py` | Structured logging, JSON output |
+| 02 | `LOG_02_loguru.py` | Zero-config logging, rotation, async |
+
+### PSE_210 — HTTP Client (2 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `HTTP_01_httpx.py` | httpx sync/async, sessions, streaming |
+| 02 | `HTTP_02_requests.py` | requests (legacy reference) |
+
+### PSE_220 — Database (2 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `DB_01_sqlalchemy.py` | SQLAlchemy ORM, models, relationships |
+| 02 | `DB_02_sqlite3.py` | sqlite3 stdlib, CRUD, transactions |
+
+### PSE_230 — Web Frameworks (2 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `WEB_01_fastapi.py` | FastAPI routes, Pydantic, dependencies |
+| 02 | `WEB_02_flask.py` | Flask routes, request/response |
+
+### PSE_240 — Terminal UI (2 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `TUI_01_rich.py` | Tables, progress bars, syntax highlighting |
+| 02 | `TUI_02_textual.py` | TUI apps, widgets, CSS styling |
+
+### PSE_250 — GUI (1 file)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `GUI_01_tkinter.py` | Widgets, layouts, events |
+
+### PSE_260 — Packaging (2 files)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `PKG_01_pyproject.toml.py` | pyproject.toml structure, tool config |
+| 02 | `PKG_02_uv.py` | uv package manager commands |
+
+### PSE_270 — Capstone (1 file)
+
+| # | File | Topic |
+|---|------|-------|
+| 01 | `CAP_01_api_server.py` | Full API with FastAPI + SQLAlchemy + tests |
 
 ## How To Use
 
@@ -226,15 +406,16 @@ Run any example directly with Python:
 
 ```bash
 python PSE_000_Python_Basics/PB_01_variables.py
-python PSE_030_Functions/06_decorators.py
-python PSE_060_Data_Structures/05_trees.py
-python PSE_070_OOP/OOP_04_abstraction.py
-python PSE_080_SOLID/SOLID_01_single_responsibility.py
-python PSE_090_Design_Patterns/Creational/DP_C_01_singleton_pattern.py
-python PSE_090_Design_Patterns/Enterprise/AP_04_event_sourcing.py
-python PSE_100_System_Design/04_caching_system.py
-python PSE_200_Concurrency/04_async_await.py
-python PSE_300_Advanced_Patterns/01_testing.py
+python PSE_010_Functions/FN_09_decorators.py
+python PSE_080_OOP/OOP_04_abstraction.py
+python PSE_120_SOLID/SOLID_01_single_responsibility.py
+python PSE_130_Design_Patterns/Creational/DP_C_01_singleton_pattern.py
+python PSE_135_Architectural_Patterns/AP_04_event_sourcing.py
+python PSE_135_Architectural_Patterns/AP_05_cqrs.py
+python PSE_160_System_Design/SD_05_caching.py
+python PSE_160_System_Design/SD_16_cdn.py
+python PSE_110_Concurrency/CC_04_asyncio.py
+python PSE_170_Algorithms/AL_01_big_o.py
 ```
 
 Most files include:
@@ -266,7 +447,7 @@ configured for Python 3.14 or newer.
 - Examples favor clarity over completeness.
 - System design examples are simplified models of real-world architectures.
 - Folder numbering is for learning order, not Python package naming.
-- Number gaps (110-190, 210-290) are reserved for future topics.
+- Number gaps (180+) are reserved for future topics.
 - New topics should stay small, runnable, and focused on one concept.
 
 ## Contributing
