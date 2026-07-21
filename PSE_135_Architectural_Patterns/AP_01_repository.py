@@ -1,4 +1,4 @@
-# Advanced Patterns - Repository Pattern
+# Architectural Patterns - Repository Pattern
 # -------------------------------------------------------------------------
 # The Repository Pattern mediates between the domain and data mapping layers.
 # It acts as an in-memory collection of domain objects, hiding the details of

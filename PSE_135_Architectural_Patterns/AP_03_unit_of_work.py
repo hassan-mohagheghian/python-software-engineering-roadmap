@@ -1,4 +1,4 @@
-# Advanced Patterns - Unit of Work
+# Architectural Patterns - Unit of Work
 # -------------------------------------------------------------------------
 # The Unit of Work Pattern maintains a list of objects affected by a
 # business transaction and coordinates the writing of changes and the

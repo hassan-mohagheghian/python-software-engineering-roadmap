@@ -1,4 +1,4 @@
-# Advanced Patterns - Event Sourcing
+# Architectural Patterns - Event Sourcing
 # -------------------------------------------------------------------------
 # Event Sourcing stores every change to application state as an immutable
 # event. Instead of saving the current state, you save the sequence of

@@ -1,4 +1,4 @@
-# Advanced Patterns - Dependency Injection
+# Architectural Patterns - Dependency Injection
 # -------------------------------------------------------------------------
 # Dependency Injection (DI) is a technique where an object receives its
 # dependencies from the outside rather than creating them internally.

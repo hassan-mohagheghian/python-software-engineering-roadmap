@@ -1,4 +1,4 @@
-# Advanced Patterns - Specification Pattern
+# Architectural Patterns - Specification Pattern
 # -----------------------------------------------------------------------------
 # The Specification Pattern is a design pattern that encapsulates business
 # rules into distinct, reusable objects. These objects define query or validation

@@ -1,4 +1,4 @@
-# Advanced Patterns - CQRS (Command Query Responsibility Segregation)
+# Architectural Patterns - CQRS (Command Query Responsibility Segregation)
 # -------------------------------------------------------------------------
 # CQRS splits a system into two separate models:
 #
